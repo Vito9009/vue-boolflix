@@ -3,15 +3,16 @@
     <div class="input-container">
       <input 
       type="text" 
-      placeholder="Cerca il fil o la serie TV che preferisci" 
-      v-model="inputText">
+      placeholder="Cerca il film o la serie TV che preferisci" 
+      v-model="inputText" 
+      >
     </div>
 
     <div class="btn-container">
       <button
       type="submit"
-      class="my_search-btn"
-      >
+      class="my_search-btn" 
+      @click="$emit('filterX', inputText)">
       Cerca
       </button>
     </div>
@@ -37,7 +38,7 @@ export default {
 
 .container-search{
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   height: 100%;
   width: 50%;

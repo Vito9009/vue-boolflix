@@ -4,7 +4,9 @@
         <div class="logo">
           boolflix
         </div>
-          <SearchFTV />
+          <SearchFTV 
+          @filterX="this.emitConnection"
+          />
       </header>
   </div>
 </template>
@@ -16,6 +18,12 @@ export default {
   name: 'Header',
   components: {
     SearchFTV
+  },
+  methods: {
+    emitConnection: function(element){
+      this.$emit('search2', element)
+    }
+
   }
 }
 </script>
@@ -33,7 +41,7 @@ header{
     text-transform: uppercase;
     font-weight: bold;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     padding: 20px;
   }
