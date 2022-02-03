@@ -1,30 +1,30 @@
 <template>
   <div>
-      <div class="film-stv-list">
+      <div v-if="filmContainer.length !=0" class="film-stv-list">
         <div >FILM</div>
           <ul>
             <li v-for="(element, index) in filmContainer" 
             :key="index">
               <div>Titolo: {{element.title}}</div>
               <div>Titolo originale: {{element.original_title}}</div>
-              <div class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: {{element.original_language}} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></div>
-              <div class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: {{element.original_language}} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></div>
-              <div class="flag-container" v-else> Lingua originale: {{element.original_language}} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></div>
+              <div class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></div>
+              <div class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></div>
+              <div class="flag-container" v-else> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></div>
               <div>Voto: {{element.vote_average}}</div>
             </li>
           </ul>
       </div>
 
-      <div class="film-stv-list">
+      <div v-if="stvContainer.length !=0" class="film-stv-list">
         <div>STV</div>
           <ul>
             <li v-for="(element, index) in stvContainer" 
             :key="index">
               <div>Titolo: {{element.name}}</div>
               <div>Titolo originale: {{element.original_name}}</div>
-              <div class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: {{element.original_language}} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></div>
-              <div class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: {{element.original_language}} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></div>
-              <div class="flag-container" v-else> Lingua originale: {{element.original_language}} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></div>
+              <div class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></div>
+              <div class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></div>
+              <div class="flag-container" v-else> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></div>
               <div>Voto: {{element.vote_average}}</div>
             </li>
           </ul>
@@ -62,6 +62,10 @@ export default {
 
       div{
         margin-bottom: 20px;
+
+        .language-text{
+          text-transform: uppercase;
+        }
       }
 
       .flag-container{
