@@ -6,7 +6,8 @@
 
     </div>
     <Main 
-    :filmContainer="arrayFilm" />
+    :filmContainer="arrayFilm" 
+    :stvContainer="arraySTV"/>
 
   </div>
 </template>
@@ -26,7 +27,9 @@ export default {
   data(){
     return{
       apiUrl: "https://api.themoviedb.org/3/search/movie",
+      apiUrlSTV: "https://api.themoviedb.org/3/search/tv",      
       arrayFilm: [],
+      arraySTV: [],      
       searchCont: ""
     }
   },
@@ -47,13 +50,33 @@ export default {
           console.log(error);
         });
     },
+    getSTV: function(){
+      axios
+      .get(this.apiUrlSTV, {
+          params: {
+            api_key: "66cd2a8a2ca34c8579719b1d566390d6",
+            query: this.searchCont
+          }
+        })
+        .then((response) => {
+          this.arraySTV = response.data.results;
+
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
     userSearch: function(element){
       this.searchCont = element;
       this.getFilm();
+      this.getSTV();
     },
   },
   created: function() {
     this.getFilm();
+    this.getSTV();
+
   }
 }
 </script>
