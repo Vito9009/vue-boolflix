@@ -2,32 +2,36 @@
   <div>
       <div v-if="filmContainer.length !=0" class="film-stv-list">
         <div >FILM</div>
-          <ul>
-            <li v-for="(element, index1) in filmContainer" 
-            :key="index1">
+          <div class="container-film-stv">
+            <div class="film-stv" v-for="(element, indexFilm) in filmContainer" 
+            :key="indexFilm">
               <div>Titolo: {{element.title}}</div>
               <div>Titolo originale: {{element.original_title}}</div>
               <div class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></div>
               <div class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></div>
               <div class="flag-container" v-else> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></div>
               <div>Voto: {{element.vote_average}}</div>
-            </li>
-          </ul>
+              <div v-for="i in 5" :key="i">
+                <i v-if="i <= starVoteAverage(element.vote_average)" class="fas fa-star stars"></i>
+                <i v-else class="far fa-star"></i>
+              </div>
+            </div>
+          </div>
       </div>
 
       <div v-if="stvContainer.length !=0" class="film-stv-list">
         <div>Serie TV</div>
-          <ul>
-            <li v-for="(element, index2) in stvContainer" 
-            :key="index2">
+          <div class="container-film-stv">
+            <div class="film-stv" v-for="(element, indexStv) in stvContainer" 
+            :key="indexStv">
               <div>Titolo: {{element.name}}</div>
               <div>Titolo originale: {{element.original_name}}</div>
               <div class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></div>
               <div class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></div>
               <div class="flag-container" v-else> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></div>
               <div>Voto: {{element.vote_average}}</div>
-            </li>
-          </ul>
+            </div>
+          </div>
       </div>
 
   </div>
@@ -39,13 +43,20 @@ export default {
   name: 'Main',
   data() {
     return{
-      active: false
+      active: false,
+      starAverage: []
     }
   },
   props: {
     filmContainer: Array,
     stvContainer: Array
+  },
+  methods: {
+    starVoteAverage: function(star) {
+      return Math.round(star/2);
+    }
   }
+
 }
 </script>
 
@@ -54,10 +65,10 @@ export default {
 .film-stv-list{
   width: 1000px;
   margin: 0 auto;
-  ul{
+  .container-film-stv{
     display: flex;
     flex-wrap: wrap;
-    li{
+    .film-stv{
       width: calc((100% / 4) - 10px);
       height: 300px;
       padding: 20px;
