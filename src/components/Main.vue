@@ -5,6 +5,17 @@
           <div class="container-film-stv">
             <ul class="film-stv" v-for="(element, indexFilm) in filmContainer" 
             :key="indexFilm">
+              <div class="poster" 
+                v-if="!element.poster_path"
+                v-show="active"
+              >Nessuna immagine copertina</div>
+              <img
+                v-else
+                v-show="active"
+                :src="'https://image.tmdb.org/t/p/w342' + element.poster_path"
+                :alt="element.original_title"
+                class="poster"
+              />
               <li>Titolo: {{element.title}}</li>
               <li>Titolo originale: {{element.original_title}}</li>
               <li class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></li>
@@ -25,6 +36,16 @@
           <div class="container-film-stv">
             <ul class="film-stv" v-for="(element, indexStv) in stvContainer" 
             :key="indexStv">
+              <div class="poster" 
+                v-if="!element.poster_path"
+                v-show="active"
+                >Nessuna immagine copertina</div>
+              <img v-else
+                v-show="active"
+                :src="'https://image.tmdb.org/t/p/w342' + element.poster_path"
+                :alt="element.original_title"
+                class="poster"
+              />
               <li>Titolo: {{element.name}}</li>
               <li>Titolo originale: {{element.original_name}}</li>
               <li class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></li>
@@ -81,6 +102,18 @@ export default {
       border: 1px solid rgb(0, 0, 0);
       list-style: none;
 
+      .poster{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+
+        img{
+          width: 100%;
+          object-fit: cover;
+        }
+      }
       li{
         display: flex;
         justify-content: space-between;
