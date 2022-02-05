@@ -3,35 +3,41 @@
       <div v-if="filmContainer.length !=0" class="film-stv-list">
         <div >FILM</div>
           <div class="container-film-stv">
-            <div class="film-stv" v-for="(element, indexFilm) in filmContainer" 
+            <ul class="film-stv" v-for="(element, indexFilm) in filmContainer" 
             :key="indexFilm">
-              <div>Titolo: {{element.title}}</div>
-              <div>Titolo originale: {{element.original_title}}</div>
-              <div class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></div>
-              <div class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></div>
-              <div class="flag-container" v-else> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></div>
-              <div>Voto: {{element.vote_average}}</div>
-              <div v-for="i in 5" :key="i">
-                <i v-if="i <= starVoteAverage(element.vote_average)" class="fas fa-star stars"></i>
-                <i v-else class="far fa-star"></i>
-              </div>
-            </div>
+              <li>Titolo: {{element.title}}</li>
+              <li>Titolo originale: {{element.original_title}}</li>
+              <li class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></li>
+              <li class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></li>
+              <li class="flag-container" v-else> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></li>
+              <li v-if="element.vote_average">Voto: {{element.vote_average}}
+                <span v-for="i in starVoteAverage(element.vote_average)" :key="i">
+                  <i class="fas fa-star star"></i>
+                </span>
+              </li>
+              <li v-else>Voto: Nessuna valutazione</li>
+            </ul>
           </div>
       </div>
 
       <div v-if="stvContainer.length !=0" class="film-stv-list">
         <div>Serie TV</div>
           <div class="container-film-stv">
-            <div class="film-stv" v-for="(element, indexStv) in stvContainer" 
+            <ul class="film-stv" v-for="(element, indexStv) in stvContainer" 
             :key="indexStv">
-              <div>Titolo: {{element.name}}</div>
-              <div>Titolo originale: {{element.original_name}}</div>
-              <div class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></div>
-              <div class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></div>
-              <div class="flag-container" v-else> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></div>
-              <div>Voto: {{element.vote_average}}</div>
-            </div>
-          </div>
+              <li>Titolo: {{element.name}}</li>
+              <li>Titolo originale: {{element.original_name}}</li>
+              <li class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></li>
+              <li class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></li>
+              <li class="flag-container" v-else> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></li>
+              <li v-if="element.vote_average">Voto: {{element.vote_average}}
+                <span v-for="i in starVoteAverage(element.vote_average)" :key="i">
+                  <i class="fas fa-star star"></i>
+                </span>
+              </li>
+              <li v-else>Voto: Nessuna valutazione</li>
+            </ul>
+          </div> 
       </div>
 
   </div>
@@ -44,7 +50,6 @@ export default {
   data() {
     return{
       active: false,
-      starAverage: []
     }
   },
   props: {
@@ -53,7 +58,7 @@ export default {
   },
   methods: {
     starVoteAverage: function(star) {
-      return Math.round(star/2);
+      return Math.ceil(star/2);
     }
   }
 
@@ -76,21 +81,20 @@ export default {
       border: 1px solid rgb(0, 0, 0);
       list-style: none;
 
-      div{
+      li{
+        display: flex;
+        justify-content: space-between;
         margin-bottom: 20px;
-        
-        .test{
-          width: 30%;
 
-          img{
-            width: 100%;
-          }
+        img{
+          width: 100%;
         }
+      }
 
         .language-text{
           text-transform: uppercase;
-        }
-      }
+        }        
+      
 
       .flag-container{
         img{
