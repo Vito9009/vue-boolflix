@@ -7,11 +7,9 @@
             :key="indexFilm">
               <div class="poster" 
                 v-if="!element.poster_path"
-                v-show="active"
-              >Nessuna immagine copertina</div>
+              ><div class="no-poster">Nessuna immagine copertina</div></div>
               <img
                 v-else
-                v-show="active"
                 :src="'https://image.tmdb.org/t/p/w342' + element.poster_path"
                 :alt="element.original_title"
                 class="poster"
@@ -38,10 +36,9 @@
             :key="indexStv">
               <div class="poster" 
                 v-if="!element.poster_path"
-                v-show="active"
-                >Nessuna immagine copertina</div>
-              <img v-else
-                v-show="active"
+              ><div class="no-poster">Nessuna immagine copertina</div></div>
+              <img
+                v-else
                 :src="'https://image.tmdb.org/t/p/w342' + element.poster_path"
                 :alt="element.original_title"
                 class="poster"
@@ -68,11 +65,6 @@
 
 export default {
   name: 'Main',
-  data() {
-    return{
-      active: false,
-    }
-  },
   props: {
     filmContainer: Array,
     stvContainer: Array
@@ -82,7 +74,6 @@ export default {
       return Math.ceil(star/2);
     }
   }
-
 }
 </script>
 
@@ -94,24 +85,39 @@ export default {
   .container-film-stv{
     display: flex;
     flex-wrap: wrap;
+
     .film-stv{
-      width: calc((100% / 4) - 10px);
+      width: calc(100% / 4);
       height: 300px;
-      padding: 20px;
-      margin: 5px;
-      border: 1px solid rgb(0, 0, 0);
+      padding: 25px;
       list-style: none;
+      position: relative;
+      margin: 5px 0;
+
+      &:hover .poster{
+        display: none;
+      }
 
       .poster{
         height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         margin: 0 auto;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        background-color: red;
+        display: block;
 
         img{
           width: 100%;
-          object-fit: cover;
+        }
+
+        .no-poster{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;
         }
       }
       li{
