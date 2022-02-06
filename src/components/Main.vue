@@ -25,6 +25,7 @@
                 </span>
               </li>
               <li v-else>Voto: Nessuna valutazione</li>
+              <li v-if="element.overview">Overview: {{element.overview}}</li>
             </ul>
           </div>
       </div>
@@ -54,6 +55,7 @@
                 </span>
               </li>
               <li v-else>Voto: Nessuna valutazione</li>
+              <li v-if="element.overview">Overview: {{element.overview}}</li>
             </ul>
           </div> 
       </div>
@@ -87,12 +89,15 @@ export default {
     flex-wrap: wrap;
 
     .film-stv{
-      width: calc(100% / 4);
+      width: calc((100% / 4) - 2px);
       height: 300px;
       padding: 25px;
       list-style: none;
       position: relative;
-      margin: 5px 0;
+      margin: 5px 1px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      overflow-y: scroll;
 
       &:hover .poster{
         display: none;
