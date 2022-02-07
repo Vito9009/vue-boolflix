@@ -8,7 +8,7 @@
               <div class="poster" 
                 v-if="!element.poster_path">
                 <div class="no-poster">
-                  <div>Nessuna immagine copertina</div>
+                  <div>{{element.title}}</div>
                   <img src="../img/boolflix.png" alt="">
                 </div>
               </div>
@@ -45,7 +45,7 @@
               <div class="poster" 
                 v-if="!element.poster_path">
                 <div class="no-poster">
-                  <div>Nessuna immagine copertina</div>
+                  <div>{{element.name}}</div>
                   <img src="../img/boolflix.png" alt="">
                 </div>
               </div>
