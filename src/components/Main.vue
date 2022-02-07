@@ -19,15 +19,15 @@
               <li class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></li>
               <li class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></li>
               <li class="flag-container" v-else> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></li>
-              <li v-if="element.vote_average">Voto: {{element.vote_average}}
-                <span v-for="fullstar in starVoteAverage(element.vote_average)" :key="fullstar">
+              <li>Voto: {{element.vote_average}}
+                <span v-for="filmfullstar in starVoteAverage(element.vote_average)" :key="filmfullstar">
                   <i class="fas fa-star star"></i>
                 </span>
-                <span v-for="emptystar in (5 - starVoteAverage(element.vote_average))" :key="emptystar">
+                <span v-for="filmemptystar in (5 - starVoteAverage(element.vote_average))" :key="filmemptystar">
                   <i class="far fa-star star"></i>
                 </span>
               </li>
-              <li v-else>Voto: Nessuna valutazione</li>
+              <li>Numero voti: {{element.vote_count}}</li>
               <li v-if="element.overview"><p class="overview">Overview: {{element.overview}}</p></li>
             </ul>
           </div>
@@ -52,15 +52,15 @@
               <li class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></li>
               <li class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></li>
               <li class="flag-container" v-else> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></li>
-              <li v-if="element.vote_average">Voto: {{element.vote_average}}
-                <span v-for="fullstar in starVoteAverage(element.vote_average)" :key="fullstar">
+              <li>Voto: {{element.vote_average}}
+                <span v-for="stvfullstar in starVoteAverage(element.vote_average)" :key="stvfullstar">
                   <i class="fas fa-star star"></i>
                 </span>
-                <span v-for="emptystar in (5 - starVoteAverage(element.vote_average))" :key="emptystar">
+                <span v-for="stvemptystar in (5 - starVoteAverage(element.vote_average))" :key="stvemptystar">
                   <i class="far fa-star star"></i>
                 </span>
               </li>
-              <li v-else>Voto: Nessuna valutazione</li>
+              <li>Numero voti: {{element.vote_count}}</li>
               <li v-if="element.overview"><p class="overview">Overview: {{element.overview}}</p></li>
             </ul>
           </div> 
@@ -73,6 +73,11 @@
 
 export default {
   name: 'Main',
+  data(){
+    return{
+      
+    }
+  },
   props: {
     filmContainer: Array,
     stvContainer: Array

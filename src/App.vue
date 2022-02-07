@@ -2,9 +2,7 @@
   <div id="app">
     <Header 
     @search2="userSearch" />
-    <div class="no-film">
-
-    </div>
+  
     <Main 
     :filmContainer="arrayFilm" 
     :stvContainer="arraySTV"/>
