@@ -49,6 +49,18 @@ export default {
     input{
       width: 300px;
       text-align: center;
+      border: none;
+      padding: 3px;
+      border-radius: 25px;
+    }
+  }
+
+  .btn-container{
+    button{
+      width: 50px;
+      padding: 3px;
+      border: none;
+      border-radius: 25px;
     }
   }
 }

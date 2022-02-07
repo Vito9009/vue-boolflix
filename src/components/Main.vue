@@ -113,7 +113,7 @@ export default {
     .film-stv{
       width: calc((100% / 4) - 2px);
       height: 300px;
-      padding: 25px;
+      padding: 30px;
       list-style: none;
       position: relative;
       margin: 5px 1px;
@@ -144,6 +144,8 @@ export default {
           flex-direction: column;
           width: 100%;
           height: 100%;
+          padding: 20px;
+          text-align: center;
 
           img{
             width: 80%;
