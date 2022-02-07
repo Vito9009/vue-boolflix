@@ -8,6 +8,9 @@
     color: rgb(255, 255, 0);
 }
 
-.film-stv-list .film-stv::-webkit-scrollbar{
-          display: none;
+.overview{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; 
+    overflow: hidden;  
 }

@@ -28,7 +28,7 @@
                 </span>
               </li>
               <li v-else>Voto: Nessuna valutazione</li>
-              <li v-if="element.overview">Overview: {{element.overview}}</li>
+              <li v-if="element.overview"><p class="overview">Overview: {{element.overview}}</p></li>
             </ul>
           </div>
       </div>
@@ -60,7 +60,8 @@
                   <i class="far fa-star star"></i>
                 </span>
               </li>
-              <li v-else>Voto: Nessuna valutazione</li>              <li v-if="element.overview">Overview: {{element.overview}}</li>
+              <li v-else>Voto: Nessuna valutazione</li>
+              <li v-if="element.overview"><p class="overview">Overview: {{element.overview}}</p></li>
             </ul>
           </div> 
       </div>
@@ -100,9 +101,6 @@ export default {
       list-style: none;
       position: relative;
       margin: 5px 1px;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-      overflow-y: scroll;
 
       &:hover .poster{
         display: none;
@@ -133,7 +131,7 @@ export default {
       li{
         display: flex;
         justify-content: space-between;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
 
         img{
           width: 100%;
