@@ -4,6 +4,10 @@
     padding: 0;
 }
 
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
 .star{
     color: rgb(255, 255, 0);
 }
@@ -11,7 +15,7 @@
 .overview{
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3; 
+    -webkit-line-clamp: 4; 
     overflow: hidden;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -20,4 +24,8 @@
 
 .overview::-webkit-scrollbar{
     display: none;
+}
+
+.my_bold{
+    font-weight: bold;
 }

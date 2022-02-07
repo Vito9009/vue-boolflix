@@ -1,15 +1,15 @@
 <template>
   <div>
       <div v-if="filmContainer.length !=0" class="film-stv-list">
-        <div >FILM</div>
+        <div class="film-stv-section"><h2>Film</h2></div>
           <div class="container-film-stv">
             <ul class="film-stv" v-for="(element, indexFilm) in filmContainer" 
             :key="indexFilm">
               <div class="poster" 
                 v-if="!element.poster_path">
                 <div class="no-poster">
-                  <div>{{element.title}}</div>
                   <img src="../img/boolflix.png" alt="">
+                  <div><h3>{{element.title}}</h3></div>
                 </div>
               </div>
               <img
@@ -18,12 +18,12 @@
                 :alt="element.original_title"
                 class="poster"
               />
-              <li>Titolo: {{element.title}}</li>
-              <li>Titolo originale: {{element.original_title}}</li>
-              <li class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></li>
-              <li class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></li>
-              <li class="flag-container" v-else> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></li>
-              <li>Voto: {{element.vote_average}}
+              <li><span class="my_bold">Titolo:</span> {{element.title}}</li>
+              <li><span class="my_bold">Titolo originale:</span> {{element.original_title}}</li>
+              <li class="flag-container" v-if="element.original_language === 'it'"> <span class="my_bold">Lingua originale:</span> <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></li>
+              <li class="flag-container" v-else-if="element.original_language === 'en'"><span class="my_bold">Lingua originale:</span> <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></li>
+              <li class="flag-container" v-else><span class="my_bold">Lingua originale:</span> <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></li>
+              <li><p class="my_bold">Voto:</p>
                 <span v-for="filmfullstar in starVoteAverage(element.vote_average)" :key="filmfullstar">
                   <i class="fas fa-star star"></i>
                 </span>
@@ -31,22 +31,22 @@
                   <i class="far fa-star star"></i>
                 </span>
               </li>
-              <li>Numero voti: {{element.vote_count}}</li>
+              <li><span class="my_bold">Numero voti:</span> {{element.vote_count}}</li>
               <li v-if="element.overview"><p class="overview">Overview: {{element.overview}}</p></li>
             </ul>
           </div>
       </div>
 
       <div v-if="stvContainer.length !=0" class="film-stv-list">
-        <div>Serie TV</div>
+        <div class="film-stv-section"><h2>Serie TV</h2></div>
           <div class="container-film-stv">
             <ul class="film-stv" v-for="(element, indexStv) in stvContainer" 
             :key="indexStv">
               <div class="poster" 
                 v-if="!element.poster_path">
                 <div class="no-poster">
-                  <div>{{element.name}}</div>
                   <img src="../img/boolflix.png" alt="">
+                  <div><h3>{{element.name}}</h3></div>
                 </div>
               </div>
               <img
@@ -55,12 +55,12 @@
                 :alt="element.original_title"
                 class="poster"
               />
-              <li>Titolo: {{element.name}}</li>
-              <li>Titolo originale: {{element.original_name}}</li>
-              <li class="flag-container" v-if="element.original_language === 'it'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></li>
-              <li class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></li>
-              <li class="flag-container" v-else> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></li>
-              <li>Voto: {{element.vote_average}}
+              <li><span class="my_bold">Titolo:</span> {{element.name}}</li>
+              <li><p class="my_bold">Titolo originale:</p> {{element.original_name}}</li>
+              <li class="flag-container" v-if="element.original_language === 'it'"> <span class="my_bold">Lingua originale:</span> <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1024px-Flag_of_Italy.svg.png" alt=""></li>
+              <li class="flag-container" v-else-if="element.original_language === 'en'"> <span class="my_bold">Lingua originale:</span> <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></li>
+              <li class="flag-container" v-else><span class="my_bold">Lingua originale:</span> <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></li>
+              <li><span class="my_bold">Voto:</span>
                 <span v-for="stvfullstar in starVoteAverage(element.vote_average)" :key="stvfullstar">
                   <i class="fas fa-star star"></i>
                 </span>
@@ -68,7 +68,7 @@
                   <i class="far fa-star star"></i>
                 </span>
               </li>
-              <li>Numero voti: {{element.vote_count}}</li>
+              <li><span class="my_bold">Numero voti:</span> {{element.vote_count}}</li>
               <li v-if="element.overview"><p class="overview">Overview: {{element.overview}}</p></li>
             </ul>
           </div> 
@@ -106,9 +106,15 @@ export default {
   margin: 0 auto;
   color: rgb(255, 255, 255);
 
+    .film-stv-section{
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
   .container-film-stv{
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 
     .film-stv{
       width: calc((100% / 4) - 8px);
@@ -156,8 +162,12 @@ export default {
       }
       li{
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
         margin-bottom: 10px;
+        font-size: 14px;
 
         img{
           width: 100%;
@@ -168,7 +178,6 @@ export default {
           text-transform: uppercase;
         }        
       
-
       .flag-container{
         img{
           width: 20px;
