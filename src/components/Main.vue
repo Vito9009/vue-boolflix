@@ -20,8 +20,11 @@
               <li class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></li>
               <li class="flag-container" v-else> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></li>
               <li v-if="element.vote_average">Voto: {{element.vote_average}}
-                <span v-for="i in starVoteAverage(element.vote_average)" :key="i">
+                <span v-for="fullstar in starVoteAverage(element.vote_average)" :key="fullstar">
                   <i class="fas fa-star star"></i>
+                </span>
+                <span v-for="emptystar in (5 - starVoteAverage(element.vote_average))" :key="emptystar">
+                  <i class="far fa-star star"></i>
                 </span>
               </li>
               <li v-else>Voto: Nessuna valutazione</li>
@@ -50,12 +53,14 @@
               <li class="flag-container" v-else-if="element.original_language === 'en'"> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></li>
               <li class="flag-container" v-else> Lingua originale: <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></li>
               <li v-if="element.vote_average">Voto: {{element.vote_average}}
-                <span v-for="i in starVoteAverage(element.vote_average)" :key="i">
+                <span v-for="fullstar in starVoteAverage(element.vote_average)" :key="fullstar">
                   <i class="fas fa-star star"></i>
                 </span>
+                <span v-for="emptystar in (5 - starVoteAverage(element.vote_average))" :key="emptystar">
+                  <i class="far fa-star star"></i>
+                </span>
               </li>
-              <li v-else>Voto: Nessuna valutazione</li>
-              <li v-if="element.overview">Overview: {{element.overview}}</li>
+              <li v-else>Voto: Nessuna valutazione</li>              <li v-if="element.overview">Overview: {{element.overview}}</li>
             </ul>
           </div> 
       </div>
