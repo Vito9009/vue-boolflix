@@ -2,7 +2,7 @@
   <div>
       <header>
         <div class="logo">
-          boolflix
+          <img src="../img/boolflix.png" alt="">
         </div>
           <SearchFTV 
           @filterX="this.emitConnection"
@@ -37,13 +37,14 @@ header{
 
   .logo{
     width: 50%;
-    color: rgb(255, 0, 0);
-    text-transform: uppercase;
-    font-weight: bold;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding: 20px;
+
+    img{
+      width: 100px;
+    }
   }
 }
 </style>
