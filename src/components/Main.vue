@@ -111,13 +111,14 @@ export default {
     flex-wrap: wrap;
 
     .film-stv{
-      width: calc((100% / 4) - 2px);
+      width: calc((100% / 4) - 8px);
       height: 300px;
       padding: 30px;
       list-style: none;
       position: relative;
-      margin: 5px 1px;
+      margin: 5px 4px;
       background-color: $cardbgcolor;
+      overflow: hidden;
 
       &:hover .poster{
         display: none;
