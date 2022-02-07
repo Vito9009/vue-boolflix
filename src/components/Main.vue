@@ -6,8 +6,12 @@
             <ul class="film-stv" v-for="(element, indexFilm) in filmContainer" 
             :key="indexFilm">
               <div class="poster" 
-                v-if="!element.poster_path"
-              ><div class="no-poster">Nessuna immagine copertina</div></div>
+                v-if="!element.poster_path">
+                <div class="no-poster">
+                  <div>Nessuna immagine copertina</div>
+                  <img src="../img/boolflix.png" alt="">
+                </div>
+              </div>
               <img
                 v-else
                 :src="'https://image.tmdb.org/t/p/w342' + element.poster_path"
@@ -39,8 +43,12 @@
             <ul class="film-stv" v-for="(element, indexStv) in stvContainer" 
             :key="indexStv">
               <div class="poster" 
-                v-if="!element.poster_path"
-              ><div class="no-poster">Nessuna immagine copertina</div></div>
+                v-if="!element.poster_path">
+                <div class="no-poster">
+                  <div>Nessuna immagine copertina</div>
+                  <img src="../img/boolflix.png" alt="">
+                </div>
+              </div>
               <img
                 v-else
                 :src="'https://image.tmdb.org/t/p/w342' + element.poster_path"
@@ -75,7 +83,7 @@ export default {
   name: 'Main',
   data(){
     return{
-      
+
     }
   },
   props: {
@@ -91,10 +99,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/variables.scss";
 
 .film-stv-list{
   width: 1000px;
   margin: 0 auto;
+  color: rgb(255, 255, 255);
+
   .container-film-stv{
     display: flex;
     flex-wrap: wrap;
@@ -106,6 +117,7 @@ export default {
       list-style: none;
       position: relative;
       margin: 5px 1px;
+      background-color: $cardbgcolor;
 
       &:hover .poster{
         display: none;
@@ -118,7 +130,7 @@ export default {
         top: 0;
         right: 0;
         left: 0;
-        background-color: red;
+        background-color: $cardbgcolor;
         display: block;
 
         img{
@@ -129,8 +141,14 @@ export default {
           display: flex;
           justify-content: center;
           align-items: center;
+          flex-direction: column;
           width: 100%;
           height: 100%;
+
+          img{
+            width: 80%;
+            margin-top: 20px;
+          }
         }
       }
       li{

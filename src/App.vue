@@ -83,4 +83,7 @@ export default {
 @import "./assets/global.scss";
 @import "./assets/variables.scss";
 
+body{
+  background-color: $boolflixbgcolor;
+}
 </style>

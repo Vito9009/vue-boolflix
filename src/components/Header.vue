@@ -29,10 +29,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/variables.scss";
 
 header{
   height: 60px;
-  background-color: rgb(0, 0, 0);
+  background-color: $boolflixbgcolor;
   display: flex;
 
   .logo{
