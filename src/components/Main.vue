@@ -24,10 +24,10 @@
               <li class="flag-container" v-else-if="element.original_language === 'en'"><span class="my_bold">Lingua originale:</span> <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></li>
               <li class="flag-container" v-else><span class="my_bold">Lingua originale:</span> <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></li>
               <li><p class="my_bold">Voto:</p>
-                <span v-for="filmfullstar in starVoteAverage(element.vote_average)" :key="filmfullstar">
+                <span v-for="(filmfullstar, indexfullstar) in starVoteAverage(element.vote_average)" :key="indexfullstar">
                   <i class="fas fa-star star"></i>
                 </span>
-                <span v-for="filmemptystar in (5 - starVoteAverage(element.vote_average))" :key="filmemptystar">
+                <span v-for="(filmemptystar, indexemptystar) in (5 - starVoteAverage(element.vote_average))" :key="indexemptystar">
                   <i class="far fa-star star"></i>
                 </span>
               </li>
@@ -61,10 +61,10 @@
               <li class="flag-container" v-else-if="element.original_language === 'en'"> <span class="my_bold">Lingua originale:</span> <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Flag_of_the_United_Kingdom.svg/800px-Flag_of_the_United_Kingdom.svg.png" alt=""></li>
               <li class="flag-container" v-else><span class="my_bold">Lingua originale:</span> <span class="language-text"> {{element.original_language}} </span> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Esperanto.svg/1024px-Flag_of_Esperanto.svg.png" alt=""></li>
               <li><span class="my_bold">Voto:</span>
-                <span v-for="stvfullstar in starVoteAverage(element.vote_average)" :key="stvfullstar">
+                <span v-for="(stvfullstar, indexfullstar) in starVoteAverage(element.vote_average)" :key="indexfullstar">
                   <i class="fas fa-star star"></i>
                 </span>
-                <span v-for="stvemptystar in (5 - starVoteAverage(element.vote_average))" :key="stvemptystar">
+                <span v-for="(stvemptystar, indexemptystar) in (5 - starVoteAverage(element.vote_average))" :key="indexemptystar">
                   <i class="far fa-star star"></i>
                 </span>
               </li>
